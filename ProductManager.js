@@ -6,7 +6,7 @@ class ProductManager {
     };
 
     async writeFile(products) {
-       await fs.promises.writeFile(this.path, JSON.stringify(products), 'utf-8');
+        await fs.promises.writeFile(this.path, JSON.stringify(products), 'utf-8');
     };
 
     async readFile() {
@@ -23,7 +23,7 @@ class ProductManager {
     async addProduct(title, description, price, thumbnail, code, stock) {
         try {
             const file = await this.readFile();
-            const id = file.length === 0 ? file.length + 1 : file[file.length -1 ].id + 1;
+            const id = file.length === 0 ? file.length + 1 : file[file.length - 1].id + 1;
             const product = {
                 title,
                 description,
@@ -117,11 +117,15 @@ class ProductManager {
 };
 
 const productManager = new ProductManager();
-//productManager.getProducts(); 
-//productManager.addProduct('Producto prueba22', 'Este es un pro22ducto prueba', 200,  'Sin imagen', 'abc123', 25);
-//productManager.getProducts(); 
-//productManager.getProductById(1);
-//productManager.getProductById(3);
-//productManager.updateProduct(1, {price: 7500, description: 'Se modifica la descripción del producto'});
-//productManager.deleteProduct(1);
-//productManager.deleteProduct(8); 
+const runProgram = async () => {
+    await productManager.getProducts(); 
+    await productManager.addProduct('Producto prueba22', 'Este es un pro22ducto prueba', 200,  'Sin imagen', 'abc123', 25);
+    await productManager.getProducts(); 
+    await productManager.getProductById(1);
+    await productManager.getProductById(3);
+    await productManager.updateProduct(1, {price: 7500, description: 'Se modifica la descripción del producto'});
+    await productManager.deleteProduct(1);
+    await productManager.deleteProduct(8);
+};
+
+runProgram();
