@@ -38,10 +38,10 @@ class ProductManager {
             if (!codeValidation && productValidation) {
                 file.push(product);
                 await this.writeFile(file);
-                console.log('Producto cargado');
+                return 'Producto cargado';
             }
             else {
-                console.log(`El producto con código ${product.code} ya fue ingresado`)
+                return `El producto con código ${product.code} ya fue ingresado`
             }
         }
         catch (error) {
@@ -52,7 +52,7 @@ class ProductManager {
     async getProducts() {
         try {
             const products = await this.readFile();
-            console.log(products);
+            return products;
         }
         catch (error) {
             console.error('Error al procesar el archivo', error);
@@ -64,10 +64,10 @@ class ProductManager {
             const products = await this.readFile();
             const idProduct = products.find(product => product.id === id);
             if (idProduct) {
-                console.log(idProduct);
+                return idProduct;
             }
             else {
-                console.error('El producto no se ha encontrado');
+                return 'El producto no se ha encontrado';
             };
         }
         catch (error) {
@@ -86,9 +86,9 @@ class ProductManager {
                 };
                 products[productIndex] = updatedProduct;
                 await this.writeFile(products);
-                console.log('Producto actualizado');
+                return 'Producto actualizado';
             } else {
-                console.error('Producto no encontrado');
+                return 'Producto no encontrado';
             }
         } catch (error) {
             console.error(error);
@@ -102,10 +102,10 @@ class ProductManager {
             if (productIndex !== -1) {
                 products.splice(productIndex, 1);
                 await this.writeFile(products);
-                console.log('Producto eliminado');
+                return 'Producto eliminado';
             }
             else {
-                console.error('Producto no encontrado');
+                return 'Producto no encontrado';
             }
         }
         catch (error) {
