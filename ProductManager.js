@@ -118,14 +118,14 @@ class ProductManager {
 
 const productManager = new ProductManager();
 const runProgram = async () => {
-    await productManager.getProducts(); 
-    await productManager.addProduct('Producto prueba22', 'Este es un pro22ducto prueba', 200,  'Sin imagen', 'abc123', 25);
-    await productManager.getProducts(); 
-    await productManager.getProductById(1);
-    await productManager.getProductById(3);
-    await productManager.updateProduct(1, {price: 7500, description: 'Se modifica la descripción del producto'});
-    await productManager.deleteProduct(1);
-    await productManager.deleteProduct(8);
+    console.log(await productManager.getProducts()); 
+    console.log(await productManager.addProduct('Producto prueba22', 'Este es un pro22ducto prueba', 200,  'Sin imagen', 'abc123', 25));
+    console.log(await productManager.getProducts()); 
+    console.log(await productManager.getProductById(1));
+    console.log(await productManager.getProductById(3));
+    console.log(await productManager.updateProduct(1, {price: 7500, description: 'Se modifica la descripción del producto'}));
+    console.log(await productManager.deleteProduct(1));
+    console.log(await productManager.deleteProduct(8));
 };
 
 runProgram();
